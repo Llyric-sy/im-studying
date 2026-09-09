@@ -1,10 +1,11 @@
 (() => {
   const $ = s => document.querySelector(s);
   const app = $('#lessonApp');
-  const esc = (v='') => String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const esc = (v='') => String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
   const id = new URLSearchParams(location.search).get('id');
   const lesson = window.lessonBank?.[id];
   const order = ['acct1','acct2','acct3','acct4','acct5','acct6','acct7','acct8','acct9','ecom1','ecom2','ecom3','ecom4','ecom5','ecomPrep','ecom6','ecom7','ecom8','ecom9','ecom10'];
+  const partialIds = new Set(['acct1','acct2','acct3','acct4','acct5','acct6','ecom1','ecom2','ecom3','ecom4','ecom5','ecomPrep']);
 
   if (localStorage.getItem('imstudying:theme') === 'light') document.body.classList.add('light');
   $('#themeBtn')?.addEventListener('click', () => {
@@ -21,7 +22,8 @@
   const unitId = id.startsWith('acct') ? 'acct' : 'ecom';
   const fullKey = `imstudying:lessonfull:${id}`;
   const progressKey = suffix => `imstudying:deep:${id}:${suffix}`;
-  const baselinePartial = localStorage.getItem(`imstudying:topic:${unitId}:${id}:learn`) === '1';
+  const baselinePartial = partialIds.has(id) || localStorage.getItem(`imstudying:topic:${unitId}:${id}:learn`) === '1';
+  if (baselinePartial) localStorage.setItem(`imstudying:topic:${unitId}:${id}:learn`,'1');
 
   function flow(items=[]) {
     return `<div class="flow-row">${items.map((x,i)=>`${i?'<span class="flow-arrow">→</span>':''}<span class="flow-node">${esc(x)}</span>`).join('')}</div>`;
