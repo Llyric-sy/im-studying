@@ -4,8 +4,8 @@
   const esc = (v='') => String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
   const id = new URLSearchParams(location.search).get('id');
   const lesson = window.lessonBank?.[id];
-  const order = ['acct1','acct2','acct3','acct4','acct5','acct6','acct7','acct8','acct9','ecom1','ecom2','ecom3','ecom4','ecom5','ecomPrep','ecom6','ecom7','ecom8','ecom9','ecom10','taxa1','taxa2','taxa3','taxa4','taxaMST','taxa5','taxaRecon','taxa6','taxa7','taxa8','taxa9'];
-  const partialIds = new Set(['acct1','acct2','acct3','acct4','acct5','acct6','ecom1','ecom2','ecom3','ecom4','ecom5','ecomPrep','taxa1','taxa2','taxa3']);
+  const order = ['acct1','acct2','acct3','acct4','acct5','acct6','acct7','acct8','acct9','acct10','ecom1','ecom2','ecom3','ecom4','ecom5','ecomPrep','ecom6','ecom7','ecom8','ecom9','ecom10','taxa1','taxa2','taxa3','taxa4','taxaMST','taxa5','taxaRecon','taxa6','taxa7','taxa8','taxa9','econ1','econ2','econ3','econ4','econ5','econ6','econ7','econ8'];
+  const partialIds = new Set(['acct1','acct2','acct3','acct4','acct5','acct6','ecom1','ecom2','ecom3','ecom4','ecom5','ecomPrep','taxa1','taxa2','taxa3','econ1','econ2','econ3','econ4','econ5']);
 
   if (localStorage.getItem('imstudying:theme') === 'light') document.body.classList.add('light');
   $('#themeBtn')?.addEventListener('click', () => {
@@ -15,11 +15,11 @@
 
   if (!lesson) {
     app.className = 'loading';
-    app.innerHTML = '<b>This detailed lesson is not available yet.</b><br><br>The course source pack may still be pending. <a style="color:#a7a5ff" href="lessons.html?v=4">Back to lessons</a>';
+    app.innerHTML = '<b>This detailed lesson is not available yet.</b><br><br>The course source pack may still be pending. <a style="color:#a7a5ff" href="lessons.html?v=5">Back to lessons</a>';
     return;
   }
 
-  const unitId = id.startsWith('acct') ? 'acct' : id.startsWith('ecom') ? 'ecom' : id.startsWith('taxa') ? 'taxa' : 'other';
+  const unitId = id.startsWith('acct') ? 'acct' : id.startsWith('ecom') ? 'ecom' : id.startsWith('taxa') ? 'taxa' : id.startsWith('econ') ? 'econ' : 'other';
   const fullKey = `imstudying:lessonfull:${id}`;
   const progressKey = suffix => `imstudying:deep:${id}:${suffix}`;
   const baselinePartial = partialIds.has(id) || localStorage.getItem(`imstudying:topic:${unitId}:${id}:learn`) === '1';
@@ -78,7 +78,7 @@
         ${lesson.sections.map(sectionMarkup).join('')}
         <section class="practice-zone" id="practice"><div class="eyebrow">active practice</div><h2>Stop reading. Use it.</h2><p style="color:var(--muted);margin-top:0">Attempt each question before revealing the answer. These are study questions built from the supplied course concepts; they are not presented as unreleased official assessment answers.</p>${practice}</section>
         <section class="finish-zone" id="finish"><div class="eyebrow">manual completion</div><h2>Before you call the lesson fully complete</h2><ul class="finish-list">${(lesson.finish||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><button id="fullCompleteBtn" class="full-complete-btn" type="button"></button><div class="full-note">Full completion is never automatic. The old “completed” baseline has been downgraded to partial; only you can promote a lesson to full.</div></section>
-        <nav class="bottom-nav">${prev?`<a href="lesson-reader.html?v=4&id=${encodeURIComponent(prev)}">← previous detailed lesson</a>`:'<span></span>'}${next?`<a href="lesson-reader.html?v=4&id=${encodeURIComponent(next)}">next detailed lesson →</a>`:'<a href="lessons.html?v=4">back to lesson catalogue →</a>'}</nav>
+        <nav class="bottom-nav">${prev?`<a href="lesson-reader.html?v=5&id=${encodeURIComponent(prev)}">← previous detailed lesson</a>`:'<span></span>'}${next?`<a href="lesson-reader.html?v=5&id=${encodeURIComponent(next)}">next detailed lesson →</a>`:'<a href="lessons.html?v=5">back to lesson catalogue →</a>'}</nav>
       </main>
     </div>`;
 
