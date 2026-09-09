@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="lessons.css" />
 </head>
 <body>
   <div class="app-shell">
@@ -23,7 +24,7 @@
 
       <nav class="nav" aria-label="Primary">
         <button class="nav-item active" data-view="dashboard"><span>⌂</span> dashboard</button>
-        <button class="nav-item" data-view="units"><span>◫</span> units</button>
+        <button class="nav-item" data-view="units"><span>◫</span> lessons</button>
         <button class="nav-item" data-view="assessments"><span>◷</span> assessments</button>
         <button class="nav-item" data-view="resources"><span>⌘</span> source map</button>
       </nav>
@@ -52,7 +53,7 @@
       <section id="view-resources" class="view"></section>
 
       <footer>
-        personal study companion · dates are mapped from the 2026 Curtin calendar and unit outlines · always verify last-minute changes in OASIS / Blackboard.
+        personal study companion · lessons are derived from the supplied Curtin materials; original protected course files stay outside this public repo · dates are mapped from the 2026 Curtin calendar and unit outlines · always verify last-minute changes in OASIS / Blackboard.
       </footer>
     </main>
   </div>
@@ -62,5 +63,6 @@
   </template>
 
   <script src="app.js"></script>
+  <script src="lessons.js"></script>
 </body>
 </html>
