@@ -9,8 +9,24 @@
     if (status) status.innerHTML = '✓ fully complete<small>marked complete by you</small>';
   });
 
-  const filterLinks = [...document.querySelectorAll('[data-unit-filter]')];
+  const tabs = document.querySelector('.tabs');
   const units = [...document.querySelectorAll('.unit[id]')];
+  if (!tabs || !units.length) return;
+
+  const existingLinks = [...tabs.querySelectorAll('a[href^="#"]')];
+  existingLinks.forEach(link => {
+    link.dataset.unitFilter = link.getAttribute('href').slice(1);
+  });
+
+  if (!tabs.querySelector('[data-unit-filter="all"]')) {
+    const allLink = document.createElement('a');
+    allLink.href = '#all';
+    allLink.dataset.unitFilter = 'all';
+    allLink.textContent = 'All';
+    tabs.prepend(allLink);
+  }
+
+  const filterLinks = [...tabs.querySelectorAll('[data-unit-filter]')];
   const validFilters = new Set(['all', ...units.map(unit => unit.id)]);
 
   function applyFilter(filter, { updateUrl = true } = {}) {
@@ -37,8 +53,12 @@
     link.addEventListener('click', event => {
       event.preventDefault();
       applyFilter(link.dataset.unitFilter);
-      document.querySelector('.tabs')?.scrollIntoView({ block: 'nearest' });
     });
+  });
+
+  window.addEventListener('hashchange', () => {
+    const hashFilter = location.hash.replace('#', '');
+    if (validFilters.has(hashFilter)) applyFilter(hashFilter, { updateUrl: false });
   });
 
   const initialFilter = location.hash.replace('#', '');
