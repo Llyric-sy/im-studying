@@ -1,0 +1,21 @@
+name: validate lesson javascript
+
+on:
+  push:
+    paths:
+      - '*.js'
+      - '.github/workflows/validate-js.yml'
+  workflow_dispatch:
+
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check JavaScript syntax
+        run: |
+          node --check deep-lessons-acct.js
+          node --check deep-lessons-ecom.js
+          node --check deep-reader.js
+          node --check dashboard-state.js
+          node --check lessons-state.js
