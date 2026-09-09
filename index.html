@@ -8,10 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=4" />
-  <link rel="stylesheet" href="lessons.css?v=4" />
-  <link rel="stylesheet" href="home-learning.css?v=2" />
-  <link rel="stylesheet" href="lesson-ui-v2.css?v=1" />
+  <link rel="stylesheet" href="styles.css?v=6" />
+  <style>
+    .nav a.nav-item{text-decoration:none;color:inherit;width:100%;display:flex}
+    .lesson-hard-link{background:#6573ff!important;border-color:#6573ff!important;color:#fff!important;font-weight:700;text-decoration:none}
+    .lesson-fallback{margin:0 0 22px;padding:18px;border:1px solid #34466c;border-radius:16px;background:#101a2e}
+    .lesson-fallback a{display:inline-block;margin-top:8px;padding:11px 15px;border-radius:11px;background:#6573ff;color:white;text-decoration:none;font-weight:700}
+  </style>
 </head>
 <body>
   <div class="app-shell">
@@ -26,7 +29,7 @@
 
       <nav class="nav" aria-label="Primary">
         <button class="nav-item active" data-view="dashboard"><span>⌂</span> dashboard</button>
-        <button class="nav-item" data-view="units"><span>◫</span> lessons</button>
+        <a class="nav-item lesson-hard-link" href="learn.html?v=1"><span>◫</span> ACTUAL LESSONS →</a>
         <button class="nav-item" data-view="assessments"><span>◷</span> assessments</button>
         <button class="nav-item" data-view="resources"><span>⌘</span> source map</button>
       </nav>
@@ -44,10 +47,13 @@
           <h1 id="pageTitle">your semester, without the blackboard maze.</h1>
         </div>
         <div class="top-actions">
+          <a class="ghost-button lesson-hard-link" href="learn.html?v=1">OPEN LESSONS</a>
           <button id="themeToggle" class="icon-button" aria-label="Toggle theme">◐</button>
           <button id="resetProgress" class="ghost-button">reset ticks</button>
         </div>
       </header>
+
+      <div class="lesson-fallback"><strong>Want to learn instead of track?</strong><br>The actual lesson reader is a separate static page now so it cannot disappear because of dashboard JavaScript.<br><a href="learn.html?v=1">OPEN ACTUAL LESSONS →</a></div>
 
       <section id="view-dashboard" class="view active"></section>
       <section id="view-units" class="view"></section>
@@ -55,18 +61,12 @@
       <section id="view-resources" class="view"></section>
 
       <footer>
-        personal study companion · lessons are derived from the supplied Curtin materials; original protected course files stay outside this public repo · dates are mapped from the 2026 Curtin calendar and unit outlines · always verify last-minute changes in OASIS / Blackboard.
+        personal study companion · actual lessons live on the dedicated lesson reader · protected Curtin/Pearson files stay outside this public repo · always verify last-minute changes in OASIS / Blackboard.
       </footer>
     </main>
   </div>
 
-  <template id="topicTemplate">
-    <article class="topic-card"></article>
-  </template>
-
-  <script src="app.js?v=4"></script>
-  <script src="lessons.js?v=4"></script>
-  <script src="home-learning.js?v=2"></script>
-  <script src="lesson-ui-v2.js?v=1"></script>
+  <template id="topicTemplate"><article class="topic-card"></article></template>
+  <script src="app.js?v=6"></script>
 </body>
 </html>
