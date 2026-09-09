@@ -1,13 +1,13 @@
 /*
   User-confirmed semester baseline as at 9 Sep 2026.
-  Past completed assessments stay checked. Past lesson blocks are pre-completed,
-  while TAXA initial learning through depreciation schedules is marked done without
-  marking the later practice/revision checks as complete.
+  Past assessments remain completed. Past lesson blocks are ONLY partial:
+  the initial learning pass is pre-ticked, while practice, solution checking and
+  final-understanding remain open until the user finishes the lesson themselves.
 */
 (function () {
   const cutoff = new Date('2026-09-09T23:59:59+08:00');
 
-  // Restore the missing early TAXA learning map so progress reflects what was actually taught.
+  // Restore early TAXA topics so the dashboard reflects the taught sequence.
   const taxa = units.find(u => u.id === 'taxa');
   if (taxa && !taxa.topics.some(t => t.id === 'taxa1')) {
     taxa.topics.unshift(
@@ -42,26 +42,24 @@
     }
   }
 
-  const allSteps = ['learn','practice','check','understood'];
-  const fullyCompletedTopics = [
-    'acct1','acct2','acct3','acct4','acct5','acct6',
-    'ecom1','ecom2','ecom3','ecom4','ecom5','ecomPrep',
-    'econ1','econ2','econ3','econ4','econ5'
+  const partialBaseline = [
+    ['acct','acct1'],['acct','acct2'],['acct','acct3'],['acct','acct4'],['acct','acct5'],['acct','acct6'],
+    ['ecom','ecom1'],['ecom','ecom2'],['ecom','ecom3'],['ecom','ecom4'],['ecom','ecom5'],['ecom','ecomPrep'],
+    ['econ','econ1'],['econ','econ2'],['econ','econ3'],['econ','econ4'],['econ','econ5'],
+    ['taxa','taxa1'],['taxa','taxa2'],['taxa','taxa3']
   ];
 
-  // Past lesson blocks are treated as completed and re-applied on every load.
-  fullyCompletedTopics.forEach(topicId => {
-    const unitId = topicId.startsWith('acct') ? 'acct' : topicId.startsWith('ecom') ? 'ecom' : 'econ';
-    allSteps.forEach(step => localStorage.setItem(`imstudying:topic:${unitId}:${topicId}:${step}`, '1'));
-  });
-
-  // TAXA: initial learning is done through the depreciation-schedule topic,
-  // but practice / official-solution / revision work is deliberately NOT marked done.
-  ['taxa1','taxa2','taxa3'].forEach(topicId => {
-    localStorage.setItem(`imstudying:topic:taxa:${topicId}:learn`, '1');
-    localStorage.setItem(`imstudying:topic:taxa:${topicId}:understood`, '1');
-    localStorage.removeItem(`imstudying:topic:taxa:${topicId}:practice`);
-    localStorage.removeItem(`imstudying:topic:taxa:${topicId}:check`);
+  // Important migration from the older build: it had auto-filled all four checks.
+  // Unless the user has explicitly used the new lesson reader to mark a lesson FULL,
+  // keep only the initial learning pass and clear the remaining auto-filled checks.
+  partialBaseline.forEach(([unitId, topicId]) => {
+    const explicitlyFull = localStorage.getItem(`imstudying:lessonfull:${topicId}`) === '1';
+    localStorage.setItem(`imstudying:topic:${unitId}:${topicId}:learn`, '1');
+    if (!explicitlyFull) {
+      ['practice','check','understood'].forEach(step => {
+        localStorage.removeItem(`imstudying:topic:${unitId}:${topicId}:${step}`);
+      });
+    }
   });
 
   const completedAssessmentIds = assessments
@@ -74,18 +72,24 @@
     oldDashboard();
     const root = document.querySelector('#view-dashboard');
     if (!root) return;
+
     const progressTitle = [...root.querySelectorAll('h3')].find(el => el.textContent.trim() === 'fresh-start progress');
     if (progressTitle) {
       progressTitle.textContent = 'semester progress';
       const p = progressTitle.parentElement?.querySelector('p');
-      if (p) p.textContent = 'completed work up to 9 Sep is already counted.';
+      if (p) p.textContent = 'past lessons count as partial only; full completion is yours to mark.';
     }
+
+    root.querySelectorAll('.unit-card').forEach(card => {
+      const meta = card.querySelector('.progress-meta span:first-child');
+      if (meta) meta.textContent = 'lesson progress';
+    });
   };
 
   renderAssessments = function () {
     const sorted = [...assessments].sort((a,b)=>new Date(a.due)-new Date(b.due));
     document.querySelector('#view-assessments').innerHTML = `
-      <div class="section-head"><div><h2>assessments & deadlines</h2><p>Anything completed by 9 Sep is permanently checked; upcoming work stays open.</p></div></div>
+      <div class="section-head"><div><h2>assessments & deadlines</h2><p>Anything completed by 9 Sep stays permanently checked; upcoming work stays open.</p></div></div>
       <div class="assessment-grid">${sorted.map(a=>{
         const lockedDone = completedAssessmentIds.includes(a.id);
         const checked = lockedDone || store.get(assessmentKey(a.id));
@@ -100,7 +104,6 @@
       }).join('')}</div>`;
   };
 
-  // Re-render after applying the baseline so the first visible state is correct.
   renderDashboard();
   renderAssessments();
 })();
