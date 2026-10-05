@@ -114,16 +114,16 @@ const assessments = [
   { id:'ecom-final', unit:'ECOM1000', name:'Final Examination', weight:'50%', due:'2026-11-02T00:00:00+08:00', display:'exam period · timetable TBA', tba:true },
   { id:'econ-exp', unit:'ECON1000', name:'MyLabs Public Goods Experiment', weight:'5%', due:'2026-08-16T21:00:00+08:00', display:'16 Aug · 9:00 PM' },
   { id:'econ-gtp', unit:'ECON1000', name:'Game Theory Presentation (written task)', weight:'30%', due:'2026-09-06T23:59:00+08:00', display:'2 Sep official · grace to 6 Sep' },
-  { id:'econ-mylabs', unit:'ECON1000', name:'L3 + L5 + L7 MyLabs', weight:'15%', due:'2026-10-05T21:00:00+08:00', display:'5 Oct · 9:00 PM', note:'Each set includes the Digital Interactive + supplementary MCQs.' },
-  { id:'econ-mra-a', unit:'ECON1000', name:'MRA Part A', weight:'part of 50%', due:'2026-10-21T20:00:00+08:00', display:'21 Oct · by 8:00 PM' },
-  { id:'econ-mra-b', unit:'ECON1000', name:'MRA Part B', weight:'part of 50%', due:'2026-11-05T23:00:00+08:00', display:'5 Nov · 11:00 PM' }
+  { id:'econ-mylabs', unit:'ECON1000', name:'L3 + L5 + L7 MyLabs', weight:'15%', due:'2026-10-07T23:59:00+08:00', display:'5 Oct official · grace to 7 Oct', note:'Each exercise is worth 5% (15% total). Two attempts per exercise; highest mark counts. Grace period runs through 7 Oct; exact grace cut-off time was not stated in the 30 Sep announcement. Each set includes the Digital Interactive + supplementary MCQs.' },
+  { id:'econ-mra-a', unit:'ECON1000', name:'MRA Part A', weight:'part of 50%', due:'2026-10-21T20:00:00+08:00', display:'21 Oct · by 8:00 PM', note:'MRA is worth 50% overall and focuses on L3–L8. Final lecture-session MRA preparation is scheduled for 9 Oct.' },
+  { id:'econ-mra-b', unit:'ECON1000', name:'MRA Part B', weight:'part of 50%', due:'2026-11-05T23:00:00+08:00', display:'5 Nov · 11:00 PM', note:'MRA is worth 50% overall and focuses on L3–L8. Final lecture-session MRA preparation is scheduled for 9 Oct.' }
 ];
 
 const sourceMap = [
   { unit:'ACCT2002', status:'strong coverage', text:'Modules 1–9 are currently represented with lecture slides and supporting material. Tutorials/solutions, revision sets, additional questions, illustration questions and several audio clips are also in the source set. Module 10+ and later weekly releases can be added next.', items:['Unit outline + program calendar','Module 1–9 lecture decks','Tutorial solutions received through Tutorial 5','Revision questions/solutions for Modules 1–3','Illustration questions + worked solutions','Additional Questions bank','Selected Excel/audio support files'] },
   { unit:'ECOM1000', status:'strong coverage', text:'The learning chain is substantially mapped from the introduction through Data Governance & Ethics, with lab files and solution workbooks included where received.', items:['Unit outline + announcements','Welcome Lab','Modules 1–10','Lab problem/exercise workbooks','Assessment-prep material/transcripts','Data Governance & Ethics cases/material'] },
   { unit:'TAXA2000', status:'outline-first', text:'The unit outline and announcements are mapped. Detailed lecture/tutorial attachments will be added when available.', items:['Unit outline','Program calendar','Assessment dates','Announcements and special opportunities'] },
-  { unit:'ECON1000', status:'outline-first', text:'The unit outline plus MyLabs and assessment announcements are mapped. Detailed teaching attachments can be added later.', items:['Unit outline','Program calendar','MyLabs instructions','Assessment announcements and deadline corrections'] }
+  { unit:'ECON1000', status:'outline-first', text:'The unit outline plus MyLabs and assessment announcements are mapped, including the 30 Sep MyLabs grace-period and MRA preparation update. Detailed teaching attachments can be added later.', items:['Unit outline','Program calendar','MyLabs instructions','Assessment announcements and deadline corrections','30 Sep MyLabs reminder + MRA preparation announcement'] }
 ];
 
 const steps = [
