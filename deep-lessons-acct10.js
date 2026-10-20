@@ -6,7 +6,7 @@
     week: '12',
     duration: '120–180 min',
     title: '10 · Cost–Volume–Profit Analysis',
-    sourceBasis: 'Curtin ACCT2002 Module 10 Cost–Volume–Profit Analysis lecture deck (2026), adapted from Datar & Rajan 17E Chapter 3, plus the supplied Additional Questions set.',
+    sourceBasis: 'Curtin ACCT2002 Module 10 Cost–Volume–Profit Analysis lecture deck (2026), official Tutorial 10 Solutions, Datar & Rajan 17E Chapter 3, plus the supplied Additional Questions set.',
     objectives: [
       'Explain what CVP analysis is actually trying to answer for a manager.',
       'Calculate contribution margin, contribution margin ratio, breakeven units and breakeven revenue.',
@@ -167,6 +167,21 @@
           'Once the output measure is sensible, the same logic applies: identify variable cost per unit of output, fixed cost, contribution per unit or per revenue dollar, then model the activity level required to cover costs or achieve a financial target.'
         ],
         checkpoint: 'I can choose an appropriate output measure for a service or not-for-profit CVP problem.'
+      },
+      {
+        kicker: 'official tutorial',
+        title: '12. Tutorial 10 worked anchors',
+        body: [
+          'The official Tutorial 10 solutions reinforce the exact assumptions and mechanics used in CVP. Question 3-2 lists the standard assumptions: volume is the driver of revenue/cost change, total cost can be separated into fixed and variable components, revenue/cost relationships are linear within the relevant range, and selling price, variable cost per unit and fixed cost are known and constant.',
+          'Question 3-8 makes an important distinction: changing the income-tax rate does not change the breakeven point because operating income at breakeven is zero, so there is no income tax at that point.',
+          'In 3-25, with selling price $12.50, variable cost $7.00 and fixed cost $880,000, contribution margin is $5.50 per unit. Breakeven is therefore 160,000 units and $2,000,000 of revenue. The remaining parts change variable cost, volume, fixed cost or price so you can see how CVP responds.'
+        ],
+        formulas: [
+          '3-25 CM/unit = $12.50 − $7.00 = $5.50',
+          'Breakeven units = $880,000 ÷ $5.50 = 160,000',
+          'Breakeven revenue = 160,000 × $12.50 = $2,000,000'
+        ],
+        checkpoint: 'I can use the official 3-25 numbers as a benchmark and explain why tax rate does not alter breakeven.'
       }
     ],
     practice: [
