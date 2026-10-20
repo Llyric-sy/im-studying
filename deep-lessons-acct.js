@@ -3,7 +3,7 @@ Object.assign(window.lessonBank, {
   acct1: {
     id:'acct1', unit:'ACCT2002', unitName:'Cost Analysis for Decision Making', date:'20–26 Jul', week:1,
     title:'The Manager & Management Accounting', duration:'75–105 min',
-    sourceBasis:'2026 Module 1 — Introduction (27 slides), Tutorial 1 material, revision material and the unit reading map to Horngren Ch. 1.',
+    sourceBasis:'2026 Module 1 — Introduction (27 slides), official Tutorial 1 Solutions, revision material and the unit reading map to Horngren Ch. 1.',
     objectives:[
       'Separate management accounting, financial accounting and cost accounting by user, purpose and type of information.',
       'Explain how management accountants support strategy rather than merely record transactions.',
@@ -62,7 +62,7 @@ Object.assign(window.lessonBank, {
 
   acct2: {
     id:'acct2', unit:'ACCT2002', unitName:'Cost Analysis for Decision Making', date:'27 Jul–2 Aug', week:2,
-    title:'Strategy', duration:'75–110 min', sourceBasis:'2026 Module 2 — Strategy (23 slides), tutorial/revision material and the unit reading map.',
+    title:'Strategy', duration:'75–110 min', sourceBasis:'2026 Module 2 — Strategy (23 slides), official Tutorial 2 Solutions, revision material and the unit reading map.',
     objectives:['Define strategy and distinguish vision, mission and objectives.','Analyse external competition with PESTEL/Five Forces and internal position with resources/capabilities/SWOT.','Distinguish corporate, business and functional strategy.','Use the BCG matrix logic.','Identify cost leadership versus differentiation from case evidence.'],
     map:['purpose + direction','external environment','internal resources/capabilities','corporate/business/functional choices','competitive advantage'],
     sections:[
@@ -87,7 +87,7 @@ Object.assign(window.lessonBank, {
 
   acct3: {
     id:'acct3', unit:'ACCT2002', unitName:'Cost Analysis for Decision Making', date:'3–9 Aug', week:3,
-    title:'Cost Terms & Purposes', duration:'100–140 min', sourceBasis:'2026 Module 3 — Cost Terms and Purposes (36 slides), Tutorial 3 solutions, Illustration Q1 and Additional Questions.',
+    title:'Cost Terms & Purposes', duration:'100–140 min', sourceBasis:'2026 Module 3 — Cost Terms and Purposes (36 slides), official Tutorial 3 Solutions, Illustration Q1 and Additional Questions.',
     objectives:['Define cost, actual/budgeted cost and cost object.','Trace versus allocate costs and classify direct/indirect relative to the cost object.','Handle fixed/variable behaviour in total and per unit within the relevant range.','Distinguish inventoriable and period costs and the three manufacturing cost categories.','Build RM, WIP, COGM, FG and COGS schedules.','Use prime/conversion cost and explain why product cost depends on purpose.'],
     map:['cost occurs','choose cost object','accumulate','trace direct / allocate indirect','classify behaviour','flow through inventory','expense when sold / period incurred'],
     sections:[
